@@ -16,6 +16,23 @@ const (
 	SECONDS_NANO_SECONDS_CONVERSION = 1_000_000_000
 )
 
+var (
+	pages = []rest.Page{
+		{
+			Name:         "test",
+			IsAuthorized: false,
+		},
+		{
+			Name:         "welcome",
+			IsAuthorized: false,
+		},
+		{
+			Name:         "not-found",
+			IsAuthorized: false,
+		},
+	}
+)
+
 func main() {
 	err := godotenv.Load()
 	if err != nil {
@@ -43,7 +60,7 @@ func main() {
 		ReadTimeout:  time.Duration(readTimeout * SECONDS_NANO_SECONDS_CONVERSION),
 		WriteTimeout: time.Duration(writeTimeout * SECONDS_NANO_SECONDS_CONVERSION),
 	}
-	rest.InitRoutes()
+	rest.InitPageRoutes(pages)
 	errChan := make(chan error)
 
 	go startServer(server, errChan)
