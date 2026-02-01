@@ -61,6 +61,9 @@ func main() {
 		WriteTimeout: time.Duration(writeTimeout * SECONDS_NANO_SECONDS_CONVERSION),
 	}
 	rest.InitPageRoutes(pages)
+	// serve static contents like js and styling
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
 	errChan := make(chan error)
 
 	go startServer(server, errChan)

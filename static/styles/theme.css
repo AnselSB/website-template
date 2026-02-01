@@ -1,0 +1,8 @@
+.root {
+    flex-direction: column;
+    align-items: center; 
+    display: flex;
+}
+
+
+
