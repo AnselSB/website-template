@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"mime"
 	"net/http"
 	"os"
 	"strconv"
@@ -62,6 +63,7 @@ func main() {
 	}
 	rest.InitPageRoutes(pages)
 	// serve static contents like js and styling
+	mime.AddExtensionType(".js", "application/javascript")
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	errChan := make(chan error)
