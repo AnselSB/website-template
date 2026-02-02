@@ -1,5 +1,5 @@
-import { initBuffers } from "./buffers";
-import { drawScene } from "./draw";
+import { initBuffers } from "./buffers.js";
+import { drawScene } from "./draw.js";
 
 const vsSource = `
     attribute vec4 pos; 
@@ -60,8 +60,8 @@ function loadShader(gl, type, source) {
 
 
 
-const goNext = (e) => {
-    window.location = '/test'
+function goNext (e) {
+    window.location = '/test';
 }
 
 function setDeps() {
