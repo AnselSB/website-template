@@ -60,12 +60,12 @@ function loadShader(gl, type, source) {
 
 
 
-function goNext (e) {
+function goNext(e) {
     window.location = '/test';
 }
 
 function setDeps() {
-    document.getElementById('welcome-p').textContent = 'hahahahahahaha'
+    document.getElementById('welcome-p').textContent = 'hahahahahahaha';
 
     const canvas = document.querySelector('#gl-canvas');
     const gl = canvas.getContext("webgl");
@@ -91,9 +91,35 @@ function setDeps() {
 
     gl.clearColor(0, 0, 0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
+    renderSquare(gl, programInfo);
 
-    const buffers = initBuffers(gl);
-    drawScene(gl, programInfo, buffers);
+
+
 }
 
-window.addEventListener('DOMContentLoaded', setDeps)
+window.addEventListener('DOMContentLoaded', setDeps);
+async function renderSquare(gl, programInfo) {
+    const square = {
+        p1: { x: 1.0, y: 1.0 },
+        p2: { x: -1.0, y: 1.0 },
+        p3: { x: 1.0, y: -1.0 },
+        p4: { x: -1.0, y: -1.0 },
+    };
+    while (true) {
+        square.p1.x = Math.random();
+        square.p1.y = Math.random();
+
+        square.p2.x = -1 * Math.random();
+        square.p2.y = Math.random();
+
+        square.p3.x = Math.random();
+        square.p3.y = -1 * Math.random();
+
+        square.p4.x = -1 * Math.random();
+        square.p4.y = -1 * Math.random();
+
+        const buffers = initBuffers(gl, square);
+
+        drawScene(gl, programInfo, buffers);
+    }
+}
