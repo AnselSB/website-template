@@ -20,21 +20,15 @@ const (
 var (
 	pages = []rest.Page{
 		{
-			Name:         "test",
-			IsAuthorized: false,
-		},
-		{
-			Name:         "welcome",
-			IsAuthorized: false,
-		},
-		{
-			Name:         "not-found",
-			IsAuthorized: false,
+			Name:            "welcome",
+			IsAuthorized:    false,
+			HandlerFunction: rest.HandleWelcome,
 		},
 	}
 )
 
 func main() {
+
 	err := godotenv.Load()
 	if err != nil {
 		err = fmt.Errorf("Failed in loading .env: %w", err)

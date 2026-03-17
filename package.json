@@ -1,0 +1,27 @@
+{
+  "name": "website-template",
+  "version": "1.0.0",
+  "description": "template for making website frontends with golang and ts",
+  "keywords": [
+    "website-template"
+  ],
+  "homepage": "https://github.com/AnselSB/website-template#readme",
+  "bugs": {
+    "url": "https://github.com/AnselSB/website-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnselSB/website-template.git"
+  },
+  "license": "ISC",
+  "author": "Ansel Sulejmani",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "" 
+    
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
